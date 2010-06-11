@@ -1,0 +1,60 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{6A7AC0B5-882C-43AB-826F-FC00E20F0A38}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="PMProject.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="C:\Program Files\Raize\RC5\Demo\RCDemo.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="..\JZBComp\JZBComp.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="PMProject">
+			<MSBuild Projects="PMProject.dproj"/>
+		</Target>
+		<Target Name="PMProject:Clean">
+			<MSBuild Targets="Clean" Projects="PMProject.dproj"/>
+		</Target>
+		<Target Name="PMProject:Make">
+			<MSBuild Targets="Make" Projects="PMProject.dproj"/>
+		</Target>
+		<Target Name="RCDemo">
+			<MSBuild Projects="C:\Program Files\Raize\RC5\Demo\RCDemo.dproj"/>
+		</Target>
+		<Target Name="RCDemo:Clean">
+			<MSBuild Targets="Clean" Projects="C:\Program Files\Raize\RC5\Demo\RCDemo.dproj"/>
+		</Target>
+		<Target Name="RCDemo:Make">
+			<MSBuild Targets="Make" Projects="C:\Program Files\Raize\RC5\Demo\RCDemo.dproj"/>
+		</Target>
+		<Target Name="JZBComp">
+			<MSBuild Projects="..\JZBComp\JZBComp.dproj"/>
+		</Target>
+		<Target Name="JZBComp:Clean">
+			<MSBuild Targets="Clean" Projects="..\JZBComp\JZBComp.dproj"/>
+		</Target>
+		<Target Name="JZBComp:Make">
+			<MSBuild Targets="Make" Projects="..\JZBComp\JZBComp.dproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="PMProject;RCDemo;JZBComp"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="PMProject:Clean;RCDemo:Clean;JZBComp:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="PMProject:Make;RCDemo:Make;JZBComp:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>
